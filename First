@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<div style="border:2px solidwhite; background-color:black;color:white;hheight:60px;">
+<a style="color:orange">Amazon.in</a>
+<a>Account</a>
+<a>My cart</a>
+<a>Contact us</a>
+<button>search amazon.in</button>
+<button style="background-color:orange">search</button>
+</div>
+</body>
+</html>
