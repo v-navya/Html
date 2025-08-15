@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+class Bank {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        // Taking personal details
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter your account number: ");
+        long number = sc.nextLong();
+
+        System.out.print("Enter your age: ");
+        int age = sc.nextInt();
+
+        System.out.print("Enter account balance: ");
+        double bal = sc.nextDouble();
+
+        sc.nextLine(); // Clear buffer
+
+        // Asking for operation
+        System.out.print("Enter your choice of mode (loan/withdraw/deposit): ");
+        String op = sc.nextLine();
+
+        switch (op) {
+            case "loan":
+                int t = 24; // months
+                double r = 1; // interest rate per month
+                double i = (bal * t * r) / 100;
+                System.out.println("Name: " + name);
+                System.out.println("Account Number: " + number);
+                System.out.println("Age: " + age);
+                System.out.println("Balance: " + bal);
+                System.out.println("Interest for loan: " + i);
+                break;
+
+            case "withdraw":
+                System.out.print("Enter the amount to withdraw: ");
+                double w = sc.nextDouble();
+                if (w > bal) {
+                    System.out.println("Insufficient balance!");
+                } else {
+                    double aw = bal - w;
+                    System.out.println("Name: " + name);
+                    System.out.println("Account Number: " + number);
+                    System.out.println("Age: " + age);
+                    System.out.println("Total balance: " + bal);
+                    System.out.println("After withdrawal remaining balance: " + aw);
+                }
+                break;
+
+            case "deposit":
+                System.out.print("Enter the amount to deposit: ");
+                double d = sc.nextDouble();
+                double ad = bal + d;
+                System.out.println("Name: " + name);
+                System.out.println("Account Number: " + number);
+                System.out.println("Age: " + age);
+                System.out.println("Total balance: " + bal);
+                System.out.println("After deposit remaining balance: " + ad);
+                break;
+
+            default:
+                System.out.println("Invalid option!");
+        }
+
+        sc.close();
+    }
+}
