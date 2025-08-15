@@ -1,70 +1,115 @@
-import java.util.Scanner;
+import java.util.*;
 
 class Bank {
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-
-        // Taking personal details
-        System.out.print("Enter your name: ");
-        String name = sc.nextLine();
-
-        System.out.print("Enter your account number: ");
-        long number = sc.nextLong();
-
-        System.out.print("Enter your age: ");
-        int age = sc.nextInt();
-
-        System.out.print("Enter account balance: ");
-        double bal = sc.nextDouble();
-
-        sc.nextLine(); // Clear buffer
-
-        // Asking for operation
-        System.out.print("Enter your choice of mode (loan/withdraw/deposit): ");
-        String op = sc.nextLine();
-
-        switch (op) {
-            case "loan":
-                int t = 24; // months
-                double r = 1; // interest rate per month
+    static String name;
+     static int number;
+      static int age;
+     static  double bal;
+     static double checkbal;
+    static List<String>t=new ArrayList<>();
+    static void lon(Scanner sc)
+    {
+        System.out.println("enter the amount of loan u want :");
+                int am=sc.nextInt();
+                int t = 24; 
+                double r = 1; 
                 double i = (bal * t * r) / 100;
                 System.out.println("Name: " + name);
                 System.out.println("Account Number: " + number);
                 System.out.println("Age: " + age);
                 System.out.println("Balance: " + bal);
                 System.out.println("Interest for loan: " + i);
-                break;
-
-            case "withdraw":
+    }
+    static void withd(Scanner sc)
+    {
                 System.out.print("Enter the amount to withdraw: ");
                 double w = sc.nextDouble();
+                t.add("withdraw :"+w);
                 if (w > bal) {
                     System.out.println("Insufficient balance!");
                 } else {
                     double aw = bal - w;
+                    bal=aw;
+                    checkbal=aw;
                     System.out.println("Name: " + name);
                     System.out.println("Account Number: " + number);
                     System.out.println("Age: " + age);
                     System.out.println("Total balance: " + bal);
                     System.out.println("After withdrawal remaining balance: " + aw);
                 }
-                break;
-
-            case "deposit":
-                System.out.print("Enter the amount to deposit: ");
+    }
+     static void dep(Scanner sc)
+    {
+        System.out.print("Enter the amount to deposit: ");
                 double d = sc.nextDouble();
+               t.add("deposit :"+d);
                 double ad = bal + d;
+                bal=ad;
+                checkbal=ad;
                 System.out.println("Name: " + name);
                 System.out.println("Account Number: " + number);
                 System.out.println("Age: " + age);
                 System.out.println("Total balance: " + bal);
                 System.out.println("After deposit remaining balance: " + ad);
+    }
+     static void checkbal()
+     {
+        System.out.println("your current balance is : "+checkbal);
+     }
+     static void transactionhistory()
+     {
+        System.out.println("ur transaction history :"+t);
+     }
+        
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+System.out.println("Enter your name: ");
+         name = sc.nextLine();
+
+        System.out.println("Enter your account number: ");
+        number = sc.nextInt();
+
+        System.out.println("Enter your age: ");
+         age = sc.nextInt();
+
+        System.out.println("Enter account balance: ");
+         bal = sc.nextDouble();
+     int op;
+     do{
+        System.out.println("Enter your choice of mode : ");
+        System.out.println("1.loan");
+        System.out.println("2.withdraw");
+        System.out.println("3.deposit");
+        System.out.println("4.check balance");
+        System.out.println("5.transaction history");
+        System.out.println("6.exit");
+        op = sc.nextInt();
+        switch (op) {
+            case 1:
+                lon(sc);
                 break;
 
+            case 2:
+                withd(sc);
+                break;
+
+            case 3:
+                dep(sc);
+                break;
+            case 4:
+              checkbal();
+              break;
+            case 5:
+              transactionhistory();
+            break;
+            case 6:
+            break;
             default:
                 System.out.println("Invalid option!");
         }
-
-        sc.close();
-    }
+    }while(op!=6);
+    
 }
+}
+
+               
